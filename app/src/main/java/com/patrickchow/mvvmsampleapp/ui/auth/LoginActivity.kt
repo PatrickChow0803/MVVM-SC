@@ -15,10 +15,9 @@ class LoginActivity : AppCompatActivity(),AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //From lines 22 - 26. It will bind our data with the ui activity_login
-
         //ActivityLoginBinding is automatically generated based off the name of the layout.
-        //Ex: activity_login.xml makes ActivityLoginBinding automatically
+        //Ex: activity_login.xml makes ActivityLoginBinding automatically. Might have to do the type inference after the
+        //data binding is complete.
         val binding :ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         val viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
 
@@ -26,6 +25,7 @@ class LoginActivity : AppCompatActivity(),AuthListener {
         binding.viewmodel = viewModel
 
         //Can assign it to this because this class extends AuthListener
+        //This connects this activity to AuthViewModel
         viewModel.authListener = this
 
     }

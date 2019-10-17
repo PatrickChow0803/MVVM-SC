@@ -2,7 +2,6 @@ package com.patrickchow.mvvmsampleapp.ui.auth
 
 import android.view.View
 import androidx.lifecycle.ViewModel
-import com.patrickchow.mvvmsampleapp.util.toast
 
 class AuthViewModel : ViewModel(){
     var email: String? = null
