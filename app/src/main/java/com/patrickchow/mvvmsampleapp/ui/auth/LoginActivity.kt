@@ -40,8 +40,8 @@ class LoginActivity : AppCompatActivity(),AuthListener {
     }
 
     override fun onSuccess(loginResponse: LiveData<String>) {
-        progress_bar.hide()
         loginResponse.observe(this, Observer {
+            progress_bar.hide()
             this.toast(it)
         })
     }

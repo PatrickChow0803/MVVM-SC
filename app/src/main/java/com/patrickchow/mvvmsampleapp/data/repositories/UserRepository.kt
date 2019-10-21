@@ -1,5 +1,6 @@
 package com.patrickchow.mvvmsampleapp.data.repositories
 
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.patrickchow.mvvmsampleapp.data.network.MyApi
@@ -10,7 +11,7 @@ import retrofit2.Response
 
 class UserRepository {
 
-    fun userLogin(email: String, password: String) : LiveData<String>{
+    fun userLogin(email: String, password: String) : LiveData<String> {
 
         val loginResponse = MutableLiveData<String>()
 
@@ -22,13 +23,14 @@ class UserRepository {
 
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if(response.isSuccessful){
-                        loginResponse.value = response.body()?.toString()
+                        loginResponse.value = response.body()?.string() + " suc"
                     }else{
-                        loginResponse.value = response.errorBody()?.toString()
+                        loginResponse.value = response.errorBody()?.string() + " fail"
                     }
                 }
 
             })
+
         return loginResponse
     }
 
