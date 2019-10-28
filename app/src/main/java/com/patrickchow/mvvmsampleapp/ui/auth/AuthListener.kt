@@ -1,6 +1,7 @@
 package com.patrickchow.mvvmsampleapp.ui.auth
 
 import androidx.lifecycle.LiveData
+import com.patrickchow.mvvmsampleapp.data.db.entities.User
 
 interface AuthListener {
 
@@ -8,7 +9,7 @@ interface AuthListener {
     fun onStarted()
 
     //Is called when the authentication is successful
-    fun onSuccess(loginResponse: LiveData<String>)
+    fun onSuccess(user: User)
 
     //Is called when the authentication is unsuccessful
     fun onFailure(message: String)

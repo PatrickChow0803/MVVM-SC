@@ -1,7 +1,9 @@
 package com.patrickchow.mvvmsampleapp.data.network
 
+import com.patrickchow.mvvmsampleapp.data.network.responses.AuthResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -13,10 +15,11 @@ interface MyApi {
 
     @FormUrlEncoded
     @POST("login")
-    fun userLogin(
+    // Suspend = Function can be paused and resumed at a later time
+    suspend fun userLogin(
         @Field("email") email: String,
         @Field("password") password: String
-    ):Call<ResponseBody>
+    ):Response<AuthResponse>
 
     companion object{
         // Makes it so that you can use type in MyApi()
